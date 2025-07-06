@@ -1,0 +1,11 @@
+from django.urls import path
+from .views.auth_views import login,register,logout_page
+from .views.main_views import index,addblog
+
+urlpatterns=[
+    path('login/',login, name='login'),
+    path('logout/',logout_page,name='logout_page'),
+    path('register/', register, name='register'),
+    path('addblog/',addblog,name='addblog'),
+    path('', index, name='index'),
+]
