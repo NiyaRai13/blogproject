@@ -15,7 +15,12 @@
     <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Add New Blog</h2>
 
     <!-- Blog Form -->
-    <form action="#" method="POST" enctype="multipart/form-data" class="space-y-5">
+    <form action="{% url 'addblog'%}" method="POST" enctype="multipart/form-data" class="space-y-5">
+     {% csrf_token %}
+
+     {% if message %}
+      <span class="text-red-500">{{message}}</span>
+     {% endif %}
 
       <!-- Title -->
       <div>

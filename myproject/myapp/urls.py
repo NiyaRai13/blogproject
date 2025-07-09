@@ -1,6 +1,6 @@
 from django.urls import path
 from .views.auth_views import login,register,logout_page
-from .views.main_views import index,addblog
+from .views.main_views import index,addblog,blog_page
 
 urlpatterns=[
     path('login/',login, name='login'),
@@ -8,4 +8,5 @@ urlpatterns=[
     path('register/', register, name='register'),
     path('addblog/',addblog,name='addblog'),
     path('', index, name='index'),
+    path('blog/<int:id>', blog_page, name='blog_page'),
 ]

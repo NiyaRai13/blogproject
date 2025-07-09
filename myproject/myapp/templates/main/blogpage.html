@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog Post</title>
+  {% load static %}
+<link  href ="{% static 'src/styles.css' %}" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+         {% include "components/navbar.html" %}
+
+
+  <!-- Blog Post -->
+  <main class="max-w-3xl mx-auto px-4 py-10 bg-white mt-10 rounded-xl shadow-lg">
+    
+    <!-- Banner Image -->
+     {% if blog.image %}
+    <img src="{{blog.image.url}}" alt="Blog Banner" class="rounded-xl mb-6 w-full object-cover h-64">
+        {% else %}
+    <img src="" alt="Blog Banner" class="rounded-xl mb-6 w-full object-cover h-64">
+        {% endif %} 
+
+    <!-- Title -->
+    <h1 class="text-4xl font-bold mb-4 text-gray-900">{{blog.title}}</h1>
+
+    <!-- Author Info -->
+    <div class="flex items-center space-x-4 mb-6">
+      <img src="https://source.unsplash.com/100x100/?person" class="w-10 h-10 rounded-full object-cover" alt="Author" />
+      <div>
+        <p class="text-sm font-semibold text-gray-700">{{blog.created_at}}</p>
+        <p class="text-sm text-gray-500">{{blog.updated_at}}</p>
+      </div>
+    </div>
+
+    <!-- Blog Content -->
+    <div class="space-y-6 leading-relaxed text-lg text-gray-700">
+      <p>Nature has always been a source of inspiration and healing. From the gentle rustle of leaves to the majestic mountains, every aspect tells a story of beauty and resilience.</p>
+      <p>In this blog, we take a walk through hidden forests, discover tranquil rivers, and reflect on how spending time outdoors can reset our minds and souls.</p>
+      <blockquote class="border-l-4 border-blue-600 pl-4 italic text-gray-600">"In every walk with nature, one receives far more than he seeks." — John Muir</blockquote>
+      <p>{{blog.description}}</p>
+    </div>
+
+    <!-- Tags -->
+    <div class="mt-10">
+      <span class="text-sm font-medium text-gray-600">Tags:</span>
+      <div class="mt-2 flex flex-wrap gap-2">
+        <span class="bg-blue-100 text-blue-600 text-sm px-3 py-1 rounded-full">#Nature</span>
+        <span class="bg-green-100 text-green-600 text-sm px-3 py-1 rounded-full">#Mindfulness</span>
+        <span class="bg-yellow-100 text-yellow-600 text-sm px-3 py-1 rounded-full">#Travel</span>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-12 py-6 text-center text-gray-500">
+    &copy; 2025 My Blog. All rights reserved.
+  </footer>
+
+</body>
+</html>

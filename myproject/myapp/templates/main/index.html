@@ -7,65 +7,71 @@
 
 <body>
        {% include "components/navbar.html" %}
-<section class="bg-white dark:bg-gray-900">
-  <!-- Title Section -->
-  <div class="text-center py-10">
-    <h1 class="text-4xl font-bold text-black dark:text-white mb-4">Discover New Adventures</h1>
-    <p class="text-lg text-gray-600 dark:text-gray-400">Explore, discover, and find inspiration through these exciting journeys.</p>
+<!-- Hero / Blog Banner -->
+<div class="relative w-full h-[300px] bg-gray-100">
+  <div class="absolute inset-0 opacity-70">
+    <img src="https://i.pinimg.com/736x/c3/57/93/c35793b01c4e151e9e58abad3499a51e.jpg" alt="Blog Banner" class="object-cover w-full h-full" />
   </div>
+  <div class="absolute inset-0 flex items-center justify-center">
+    <div class="text-center text-white">
+      <h1 class="text-4xl font-bold">Welcome to Bappa's Blog</h1>
+      <p class="mt-3 text-lg">Thoughts, recipes, stories, and life insights – fresh from the grind!</p>
+    </div>
+  </div>
+</div>
 
-  <!-- Content Section -->
-  <div class="px-8 py-10 mx-auto lg:max-w-screen-xl sm:max-w-xl md:max-w-full sm:px-12 md:px-16 lg:py-20 sm:py-16">
-    <div class="grid gap-x-8 gap-y-12 sm:gap-y-16 md:grid-cols-2 lg:grid-cols-3">
-      <div class="relative">
-        <a href="#_" class="block overflow-hidden group rounded-xl shadow-lg">
-          <img src="https://images.unsplash.com/photo-1511497584788-876760111969?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxmb3Jlc3R8ZW58MHwwfHx8MTcyNjkxODYzNHww&ixlib=rb-4.0.3&q=80&w=1080" class="object-cover w-full h-56 transition-all duration-300 ease-out sm:h-64 group-hover:scale-110" alt="Adventure">
-        </a>
-        <div class="relative mt-5">
-          <p class="uppercase font-semibold text-xs mb-2.5 text-purple-600">September 10th 2023</p>
-          <a href="#" class="block mb-3 hover:underline">
-            <h2 class="text-2xl font-bold leading-5 text-black dark:text-white transition-colors duration-200 hover:text-purple-700 dark:hover:text-purple-400">
-              Journey to the Mountains
-            </h2>
-          </a>
-          <p class="mb-4 text-gray-700 dark:text-gray-300">Escape the hustle and explore the serene beauty of the mountains. Discover the peace and adventure that awaits.</p>
-          <a href="#_" class="font-medium underline text-purple-600 dark:text-purple-400">Read More</a>
+<!-- Blog Posts Section -->
+<section class="py-10" id="blog-posts">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Latest Blog Posts</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {%for post in blog %}
+
+      <!-- Blog Card -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        {% if post.image %}
+        <img src="{{post.image.url}}" alt="Post Image" class="w-full h-64 object-cover">
+        {% else %}
+        <img src="" alt="Placeholder Image" class="w-full h-64 object-cover">
+        {% endif %} 
+
+        <div class="p-6">
+         <a href="{% url 'blog_page' post.id %}" ><h3 class="text-xl font-semibold mb-2">{{post.title}}</h3></a>
+          <h4 class="text-l font-bold ">{{post.category}}</h3>
+
+          <p class="text-gray-700 text-base">{{post.category}}</p>
         </div>
       </div>
-
-      <div class="relative">
-        <a href="#_" class="block overflow-hidden group rounded-xl shadow-lg">
-          <img src="https://images.unsplash.com/photo-1523905330026-b8bd1f5f320e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" class="object-cover w-full h-56 transition-all duration-300 ease-out sm:h-64 group-hover:scale-110" alt="Ocean">
-        </a>
-        <div class="relative mt-5">
-          <p class="uppercase font-semibold text-xs mb-2.5 text-purple-600">September 15th 2023</p>
-          <a href="#" class="block mb-3 hover:underline">
-            <h2 class="text-2xl font-bold leading-5 text-black dark:text-white transition-colors duration-200 hover:text-purple-700 dark:hover:text-purple-400">
-              Explore the Deep Oceans
-            </h2>
-          </a>
-          <p class="mb-4 text-gray-700 dark:text-gray-300">Dive into the deep oceans and explore the beauty and mystery of the underwater world. A truly unforgettable experience.</p>
-          <a href="#_" class="font-medium underline text-purple-600 dark:text-purple-400">Read More</a>
-        </div>
-      </div>
-
-      <div class="relative">
-        <a href="#_" class="block overflow-hidden group rounded-xl shadow-lg">
-          <img src="https://images.unsplash.com/photo-1629112250823-3f091e001783?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxEZXNlcnQlMjBTYWZhcml8ZW58MHwwfHx8MTcyNjkxODcwOHww&ixlib=rb-4.0.3&q=80&w=1080" class="object-cover w-full h-56 transition-all duration-300 ease-out sm:h-64 group-hover:scale-110" alt="Desert Adventure">
-        </a>
-        <div class="relative mt-5">
-          <p class="uppercase font-semibold text-xs mb-2.5 text-purple-600">October 5th 2023</p>
-          <a href="#" class="block mb-3 hover:underline">
-            <h2 class="text-2xl font-bold leading-5 text-black dark:text-white transition-colors duration-200 hover:text-purple-700 dark:hover:text-purple-400">
-              Desert Safari
-            </h2>
-          </a>
-          <p class="mb-4 text-gray-700 dark:text-gray-300">Venture into the heart of the desert and experience the thrill of a safari amidst the dunes.</p>
-          <a href="#_" class="font-medium underline text-purple-600 dark:text-purple-400">Read More</a>
-        </div>
-      </div>
+            {%endfor%}
     </div>
   </div>
 </section>
+
+<!-- About Blog Section -->
+<section class="bg-gray-100 py-16" id="about">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">About This Blog</h2>
+      <p class="text-lg text-gray-700 leading-relaxed">
+        Welcome to the Bappa Blog – where flour meets flavor, tradition meets creativity, and every post brings you one step closer to authentic, grounded living. We write about food, life hacks, sustainable living, and everything that makes life more wholesome. Whether you're a foodie, a home cook, or just curious, we’ve got something for you!
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-200 text-white py-4 px-3">
+  <div class="container mx-auto flex flex-wrap items-center justify-between">
+    <div class="w-full text-center">
+      <p class="text-xs text-gray-400">© 2024 Bappa Blog. All Rights Reserved.</p>
+      <ul class="flex justify-center gap-4 text-sm text-gray-500 mt-2">
+        <li><a href="#about" class="hover:text-gray-700">About</a></li>
+        <li><a href="#blog-posts" class="hover:text-gray-700">Posts</a></li>
+        <li><a href="/privacy" class="hover:text-gray-700">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
