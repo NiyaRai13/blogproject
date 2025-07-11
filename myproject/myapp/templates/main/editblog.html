@@ -33,10 +33,10 @@
         <select id="category" name="category"  required
           class="w-full border border-gray-300 px-4 py-2 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none">
           <option value="{{blog.category}}">{{blog.category}}</option>
-          <option value="technology">Technology</option>
-          <option value="lifestyle">Lifestyle</option>
-          <option value="travel">Travel</option>
-          <option value="coding">Coding</option>
+          <option value="Technology">Technology</option>
+          <option value="Lifestyle">Lifestyle</option>
+          <option value="Travel">Travel</option>
+          <option value="Coding">Coding</option>
         </select>
       </div>
 
@@ -64,7 +64,7 @@
 
       <!-- Submit Button -->
       <div class="pt-2">
-        <a href="{% url 'index'%}"><button type="submit"
+        <a href="{% url 'blog_page' blog.id %}"><button type="submit"
           class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-md transition">
           Publish Blog
         </button></a>
