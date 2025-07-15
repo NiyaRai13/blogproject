@@ -49,3 +49,4 @@ def register(request):
             errors['error'] = "Failed to Register"
             return render(request, 'auth/login.html', {'errors':errors})
     return render(request,'auth/register.html')
+    
