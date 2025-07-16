@@ -1,0 +1,12 @@
+<p>This is newapp index</p>
+
+{% for item in blog %}
+<div>
+    <p>Title:{{item.title}}</p>
+    <p>Category:{{item.category}}</p>
+    <p>Description:{{item.description}}</p>
+    <img style="width:50px height:auto " src="{{item.image.url}}"/>
+
+
+</div>
+{% endfor %}
